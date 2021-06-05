@@ -17,7 +17,6 @@ $loader = new FilesystemLoader(__DIR__ . '/../templates');
 
 $container->set('templating', function () use ($loader) {
     return new Environment($loader, [
-        'cache' => __DIR__ . '/../var',
         'auto_reload ' => true
     ]);
 });

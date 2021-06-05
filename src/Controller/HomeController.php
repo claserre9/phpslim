@@ -6,28 +6,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Container\ContainerInterface;
 
-class HomeController
+class HomeController extends AbstractController
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
 
-    /**
-     * HomeController constructor.
-     * @param ContainerInterface $container
-     */
-    public function __construct(ContainerInterface $container)
+    public function index(Request $request, Response $response): Response
     {
-        $this->container = $container;
-    }
-
-    public function index(Request $request, Response $response)
-    {
-
-        $html = $this->container->get('templating')->render('index.html.twig');
-        $response->getBody()->write($html);
-        return $response;
+        return $this->render($request, $response, 'index.html.twig' , ["nom"=>"Matt"]);
     }
 
 
